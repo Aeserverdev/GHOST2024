@@ -1424,7 +1424,6 @@ function renderGallery() {
         <div class="gallery-item-meta">${photo.date} · FILE_${String(index+1).padStart(3,'0')}</div>
         <div class="gallery-item-name">${photo.name || 'CLASSIFIED'}</div>
       </div>
-      <button class="gallery-item-delete" onclick="deletePhoto(${index}, event)" title="Hapus">✕</button>
     `;
     item.addEventListener('click', (e) => {
       if (e.target.classList.contains('gallery-item-delete')) return;
@@ -1432,14 +1431,6 @@ function renderGallery() {
     });
     grid.appendChild(item);
   });
-}
-
-function deletePhoto(index, event) {
-  event.stopPropagation();
-  photos.splice(index, 1);
-  localStorage.setItem('ghost_photos', JSON.stringify(photos));
-  renderGallery();
-  showToast('// File dihapus dari direktori');
 }
 
 renderGallery();
